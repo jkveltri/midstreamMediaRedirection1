@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Midstream Media Redirection</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+	<script src="hls_players/hls.js/hls.min.js"></script>
+</head>
+<body>
+	<video id="video" controls="true"></video>
+	<script>
+	  if(Hls.isSupported()) {
+	    var video = document.getElementById('video');
+	    var hls = new Hls();
+	    hls.loadSource('index_abs_urls.m3u8');
+	    hls.attachMedia(video);
+	    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+	      video.play();
+	  });
+	 }
+	</script>
+	
+</body>
+</html>
